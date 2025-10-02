@@ -1,7 +1,7 @@
 import ClockImage from "./ClockImage"
 import ClockTime from "./ClockTime"
 
-export default function Clock() {
+export default function MyClock() {
   return (
     <div>
       <ClockImage />

@@ -1,12 +1,15 @@
 import './App.css'
-// import MyClass from './02/Clock'
+import MyClock from './02/Clock'
 import MyDiv1 from './03/MyDiv1'
+import MyList from './04/MyList'
 
 function App() {
 
   return (  
     <div className='w-full h-screen flex flex-col items-center justify-center'>
-      <MyDiv1 />
+      {/* <MyClock /> */}
+      {/* <MyDiv1 />/ */}
+      <MyList />
     </div>
   )
 }
