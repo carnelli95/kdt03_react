@@ -1,7 +1,5 @@
 import MyDiv2 from "./MyDiv2"
 
-
-
 export default function MyDiv1() {
   const d1 = 'div1';
   const d2 = 'div2';
