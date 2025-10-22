@@ -19,7 +19,7 @@ export default function TailButton({color, caption, onHandle}) {
     const btstyle = BTStyle[color];
     
     return (
-    <button className={`${btstyle.base} text-white rounded
+    <button className={`${btstyle.base} text-white rounded m-1
                        ${btstyle.hover} hover:font-bold px-4 py-2`}
             onClick={onHandle}>
         {caption}

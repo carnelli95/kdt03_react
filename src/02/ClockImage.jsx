@@ -2,7 +2,7 @@
 
 export default function ClockImage() {
   return (
-    <div className="w-64">
+    <div className='flex justify-center items-center'>
       <img src="/img/clock.png" alt ="clock" className="w-64"/>
     </div>
   )

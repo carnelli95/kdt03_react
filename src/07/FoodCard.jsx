@@ -10,7 +10,7 @@ export default function FoodCard({data}) {
     
     return (
     <div className='w-full flex justify-start items-start
-                    border border-pink-500
+                    border border-blue-500
                     rounded-sm'>
       <div className='w-1/3 px-5 py-2 flex justify-center'>
         <img src={data['구분'] == '광역지원센터' ? busan :

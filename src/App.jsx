@@ -7,6 +7,8 @@ import MyList from './04/MyList'
 import MyToggle from './05/MyToggle'
 import Lotto from './06/Lotto'
 import FoodMain from './07/FoodMain'
+// import MyEffect from './08/myEffect'
+import BoxOffice from './09/BoxOffice'
 
 
 function App() {
@@ -15,7 +17,7 @@ function App() {
       <div className='w-full h-screen flex flex-col overflow-hidden'>
         <Header />
         <main className='container mx-auto flex flex-col flex-grow overflow-y-auto h-fu'>
-          <FoodMain />
+          <BoxOffice />
         </main>
         <Footer />
       </div>
