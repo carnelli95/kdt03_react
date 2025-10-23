@@ -16,7 +16,7 @@ export default function MyListCard({title, imgUrl, content}) {
     }
 
     const handleClick2 = () => {
-        setDcnt(dcnt * 2);
+        setDcnt(dcnt + 1);
         console.log(`${title} click : ${cnt}`)
     }
   

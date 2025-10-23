@@ -28,29 +28,32 @@ export default function BoxOffice() {
     }
 
 
-    const getFetchData = (dt) => {
+    const getFetchData = async (dt) => {
         
        
         // console.log(apiKey)
 
-        let yesterday = getYesterday().replaceAll("-", "");
         const apiKey = import.meta.env.VITE_MV_API;
         let baseUrl = 'http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?'
-        let url = `${baseUrl}key=${apiKey}&targetDt=${yesterday}` ;
+        let url = `${baseUrl}key=${apiKey}&targetDt=${dt}` ;
         console.log(url)
-        console.log(yesterday)
+        
+        const resp = await fetch(url);
+        const data = await resp.json();
+        setTags(data.boxOfficeResult.dailyBoxOfficeList);
 
-        fetch(url)
-            .then(resp => resp.json())
-            .then(data => {
-                setTags(data.boxOfficeResult.dailyBoxOfficeList)})
-            .catch(err => console.log(err));
+        // fetch(url)
+        //     .then(resp => resp.json())
+        //     .then(data => {
+        //         setTags(data.boxOfficeResult.dailyBoxOfficeList)})
+        //     .catch(err => console.log(err));
     }
 
-    // 컴포넌트 생성 시 한번
-    useEffect(() =>{
-        getFetchData();
-    },[])
+    //컴포넌트 생성시 한번
+    useEffect(()=>{
+        let dt = getYesterday().replaceAll('-', '') ;
+        getFetchData(dt) ;
+    }, []) ;
 
     return (
     <div className="relative overflow-x-auto">
