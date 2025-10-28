@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import TrafficNav from './TrafficNav'
-import trafficData from './교통사고통계.json'
+// import trafficData from './교통사고통계.json'
 import TrafficInfo from './TrafficInfo'
 
 export default function Traffic() {
@@ -18,9 +18,23 @@ export default function Traffic() {
     // 사고데이터
     const [tinfo, setTinfo] = useState([]);
 
-    // JSON 불러오기
-    useEffect(() => {
+    // API 불러오기
+    const getFetchData = async () => {
+        const apiKey = import.meta.env.VITE_API_KEY;
+        console.log(apiKey)
+        let baseUrl = 'https://api.odcloud.kr/api/15070282/v1/uddi:8449c5d7-8be5-4712-9093-968fc0b2d9fc?page=1&perPage=117&'
+        let url = `${baseUrl}serviceKey=${apiKey}`;
+        
+        const resp = await fetch(url);
+        const data = await resp.json();
+        const trafficData = data.data;
+        console.log(data);
         setTdata(trafficData);
+    }
+
+    //JSON 불러오기
+    useEffect(() => {
+        getFetchData();
     }, []);
 
     // 대분류 추출
