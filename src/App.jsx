@@ -23,7 +23,7 @@ function App() {
       <div className='w-full h-screen flex flex-col overflow-hidden'>
         <Header />
         <main className='container mx-auto flex flex-col flex-grow overflow-y-auto h-fu'>
-          <Festival />
+          <Gallery />
         </main>
         <Footer />
       </div>

@@ -13,10 +13,16 @@ export default function Gallery() {
     const [cards, setCards] = useState([]);
     const kwRef = useRef();
 
+    const handleCancel = () => {
+      setTags([]) ;
+      kwRef.current.value = "" ;
+      kwRef.current.focus();
+   }
+
     const handleClick = async () => {
 
       if(kwRef.current.value == '') {
-        alert('키워드를 입력');
+        alert('키워드를 입력해 주세요');
         kwRef.current.focus();
         return
       }  
@@ -26,7 +32,7 @@ export default function Gallery() {
     const getFetchData = async () => {
   
         const apiKey = import.meta.env.VITE_API_KEY;
-        const kw = kwRef.current.value;
+        const kw = encodeURI(kwRef.current.value);
         let url = `/photo-api/gallerySearchList1?`
                   +`serviceKey=${apiKey}&numOfRows=50&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&`
                   +`keyword=${kw}&_type=json`
@@ -39,6 +45,7 @@ export default function Gallery() {
     }
 
     useEffect(() => {
+        kwRef.current.focus();
         getFetchData();
     },[])
 
@@ -56,27 +63,27 @@ export default function Gallery() {
     },[tags])
 
     return (
-    <div className='w-full flex flex-col justify-start items-center'>
-      <h1 className='w-9/10 p-5 h-1/4 mt-5 text-2xl font-bold text-center'>
-        <div className='flex justify-center items-center'>
+    <div className='w-full h-full flex flex-col justify-start items-center'>
+      <div className='w-9/10 p-5 mt-5 text-2xl font-bold text-center'>
+        <h1 className='flex justify-center items-center'>
           <span>한국관광공사 사진 정보 서비스</span>
           <Fa500Px size={25}/>
-        </div>
-      </h1>
-
+        </h1>
+      </div>
       <div className='w-9/10 p-5
-                      bg-grey-50
+                      bg-gray-50
                       flex justify-center'>
         <div className="grid grid-cols-2">
             <TailInput type='text' name='txt1' ref={kwRef}/>
             <div>
                 <TailButton color='blue' caption='확인' onHandle={handleClick} />
-                <TailButton color='blue' caption='취소' onHandle={handleClick} />
+                <TailButton color='blue' caption='취소' onHandle={handleCancel} />
             </div>
         </div>
       </div>
-      <div className="mt-4 w-9/10 p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6
-                      object-cover">
+      <div className="mt-4 w-9/10 h-3/4 overflow-auto 
+                     grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4
+                      ">
         {cards.map(item => <TailCard 
                               key={item.key}
                               title={item.title}
