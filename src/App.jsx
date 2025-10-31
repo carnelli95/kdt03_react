@@ -14,6 +14,7 @@ import MyRef from './11/MyRef'
 import RefCal from './12/RefCal'
 import Gallery from './13/Gallery'
 import Festival from './14/Festival'
+import RouteMain from './15/RouteMain'
 
 
 
@@ -23,7 +24,7 @@ function App() {
       <div className='w-full h-screen flex flex-col overflow-hidden'>
         <Header />
         <main className='container mx-auto flex flex-col flex-grow overflow-y-auto h-fu'>
-          <Festival />
+          <RouteMain />
         </main>
         <Footer />
       </div>
