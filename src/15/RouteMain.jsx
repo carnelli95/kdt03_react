@@ -4,6 +4,7 @@ import RouteHome from './RouteHome'
 import RoutePage1 from './RoutePage1'
 import RoutePage2 from './RoutePage2'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import MyClock from '../02/Clock'
 
 export default function RouteMain() {
   return (

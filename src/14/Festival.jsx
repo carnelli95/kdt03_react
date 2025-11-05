@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import TailCard from '../component/TailCard';
+import { Link } from 'react-router-dom';
 
 export default function Festival() {
   const [tdata, setTdata] = useState([]);
@@ -59,7 +60,12 @@ export default function Festival() {
       </div>
 
       <div className="mt-4 w-9/10 h-3/4 overflow-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {selectedArea.map(item => (
+        {selectedArea.map((item, idx) => (
+                                          <Link to="/Festival/Contents"
+                                          state= {{content:item}} 
+                                          key={item.UC_SEQ + idx}
+                                          >
+                                        
           <TailCard
             key={item.UC_SEQ}
             imageUrl={item.MAIN_IMG_THUMB}
@@ -68,6 +74,7 @@ export default function Festival() {
             traffic={item.TRFC_INFO}
             day={item.USAGE_DAY_WEEK_AND_TIME}
           />
+          </Link>
         ))}
       </div>
     </div>

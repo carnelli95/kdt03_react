@@ -15,9 +15,7 @@ export default function TailCard({ title, imageUrl, location, searchKeyword, tra
     
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-      <a href="#">
         <img className="rounded-t-lg w-full h-46 object-cover" src={imageUrl} alt={title} />
-      </a>
       <div className="p-5">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {title}
