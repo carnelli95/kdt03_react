@@ -38,7 +38,7 @@ export default function Header() {
                   </Link>
                 </li>
                  <li>
-                  <Link to="/ChargeInfo"
+                  <Link to="/ChargerInfo"
                       className='hover:font-bold hover:bg-blue-50 p-2 rounded-sm hover:text-blue-200'>
                       전기자동차
                   </Link>

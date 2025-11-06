@@ -1,25 +1,27 @@
-import React from 'react'
+import React, { forwardRef } from 'react';
 
-export default function TailSelect({id, title, opk, opv, onHandle}) {
+const TailSelect = forwardRef(({ id, title, opk, opv, onHandle }, ref) => {
   return (
     <div>
-        <label htmlFor={id} 
-                className="block mb-2 text-sm font-medium text-gray-900 ">
-                    {title}
-        </label>
-        <select id={id} 
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
-             dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option selected>{title}을 선택하세요</option>
-            {
-                opk.map((op, idx) => <option key={op})
-
-
-                >
-            }
-          
-        </select>
+      <label htmlFor={id} className="block mb-2 text-sm font-medium text-gray-900">
+        {title}
+      </label>
+      <select
+        id={id}
+        ref={ref}
+        onChange={onHandle}
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      >
+        <option value="">선택하세요</option>
+        {opk.map((key, index) => (
+          <option key={key} value={key}>
+            {opv[index]}
+          </option>
+        ))}
+      </select>
     </div>
-  )
-}
+  );
+});
+
+export default TailSelect;
