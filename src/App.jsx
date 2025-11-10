@@ -18,7 +18,8 @@ import Festival from './14/Festival'
 import RouteMain from './15/RouteMain'
 import FestivalContents from './14/FestivalContents'
 import ChargerInfo from './16/ChargerInfo'
-
+// import JotaiCnt from './17/JotaiCnt'
+import TodoList from './18/TodoList'
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
             <Route path="/Festival" element={<Festival />} />
             <Route path="/Festival/Contents" element={<FestivalContents />} />
             <Route path="/ChargerInfo" element={<ChargerInfo />} />
+            {/* <Route path="/JotaiCnt" element={<JotaiCnt />} /> */}
+            <Route path="/TodoList" element={<TodoList />} />
           </Routes>
         </main>
         <Footer />
