@@ -50,6 +50,12 @@ export default function Header() {
                       투두리스트
                   </Link>
                 </li>
+                 <li>
+                  <Link to="/Subway"
+                      className='hover:font-bold hover:bg-blue-50 p-2 rounded-sm hover:text-blue-200'>
+                      부산지하철실내공기
+                  </Link>
+                </li>
             </ul>
         </nav>
     </header>

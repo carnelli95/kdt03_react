@@ -18,8 +18,10 @@ import Festival from './14/Festival'
 import RouteMain from './15/RouteMain'
 import FestivalContents from './14/FestivalContents'
 import ChargerInfo from './16/ChargerInfo'
+import ChargerDetail from './16/ChargerDetail'
 // import JotaiCnt from './17/JotaiCnt'
-import TodoList from './18/TodoList'
+import TodoList from './18_1/TodoList'
+import Subway from './19/Subway'
 
 function App() {
   return (
@@ -35,8 +37,10 @@ function App() {
             <Route path="/Festival" element={<Festival />} />
             <Route path="/Festival/Contents" element={<FestivalContents />} />
             <Route path="/ChargerInfo" element={<ChargerInfo />} />
+            <Route path="/ChargerInfo/detail" element={<ChargerDetail />} />
             {/* <Route path="/JotaiCnt" element={<JotaiCnt />} /> */}
             <Route path="/TodoList" element={<TodoList />} />
+            <Route path="/Subway" element={<Subway />} />
           </Routes>
         </main>
         <Footer />

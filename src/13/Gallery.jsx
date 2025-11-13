@@ -33,7 +33,7 @@ export default function Gallery() {
   
         const apiKey = import.meta.env.VITE_API_KEY;
         const kw = encodeURI(kwRef.current.value);
-        let url = `/photo-api/gallerySearchList1?`
+        let url = `/api/B551011/PhotoGalleryService1/gallerySearchList1?`
                   +`serviceKey=${apiKey}&numOfRows=50&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&`
                   +`keyword=${kw}&_type=json`
         console.log(url)

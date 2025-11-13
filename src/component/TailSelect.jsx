@@ -8,16 +8,13 @@ const TailSelect = forwardRef(({ id, title, opk, opv, onHandle }, ref) => {
       </label>
       <select
         id={id}
-        ref={ref}
+        ref={ref}       
         onChange={onHandle}
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
       >
-        <option value="">선택하세요</option>
-        {opk.map((key, index) => (
-          <option key={key} value={key}>
-            {opv[index]}
-          </option>
+        <option value="">선택</option>
+        {opk.map((k, idx) => (
+          <option key={idx} value={k}>{opv[idx]}</option>
         ))}
       </select>
     </div>

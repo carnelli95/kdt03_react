@@ -2,6 +2,19 @@ import React, { useEffect, useRef, useState } from 'react';
 import TailCard from '../component/TailCard';
 import { Link , useSearchParams } from "react-router-dom";
 
+import { Suspense } from "react";
+
+import { useAtom } from "jotai";
+import { selGuAtom, festivalFetchData } from "./atomFestival";
+
+export default function Festival() {
+  return (
+  <Suspense fallback="<div>로딩중...</div>">
+    <FestivalContent />
+  </Suspense>
+  );
+}
+
 export default function Festival() {
   const [tdata, setTdata] = useState([]);
   const [areas, setAreas] = useState([]);
@@ -9,7 +22,6 @@ export default function Festival() {
   const [gu, setGu] = useState() ;
 
   const selRef = useRef();
-  const [sParams] = useSearchParams() ;
 
   const handleChange = () => {
     setGu(selRef.current.value) ;

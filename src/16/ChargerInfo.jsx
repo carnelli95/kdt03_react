@@ -6,14 +6,16 @@ import kinddetail from './data/kinddetail.json';
 import stat from './data/stat.json'
 import TailSelect from '../component/TailSelect';
 import TailButton from '../component/TailButton';
-import ChargerCard from '../component/ChargerCard';
-
+import ChargerCard from "./ChargerCard"
+import ChargerStat from "./ChargerStat"
+import { Link } from "react-router-dom"
 
 export default function ChargeInfo() {
   const [zsc, setZsc] = useState();       
   const [kindData, setKindData] = useState();
   const [tdata, setTdata] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
+  
 
   const sel1Ref = useRef();
   const sel2Ref = useRef();
@@ -45,19 +47,30 @@ export default function ChargeInfo() {
 
    
 
+  //시도 선택
   const handleZcode = () => {
-    const value = sel1Ref.current.value;
-    console.log(value)
-    if (value == "") setZsc();
-    else setZsc(zscode[value]);
-  };
+    setZsc(null);
+    setTdata([]);
+    setIsLoading(false);
 
+    if (sel1Ref.current.value == "")
+      setZsc(null);
+    else
+      setZsc(zscode[sel1Ref.current.value]);
+  }
+
+  //충전소 구분
   const handleKind = () => {
-    const value = sel3Ref.current.value;
-    console.log(value)
-    if (value == "") setKindData();
-    else setKindData(kinddetail[value]);
-  };
+    setKindData(null);
+    setTdata([]);
+    setIsLoading(false);
+
+    console.log(sel3Ref.current.value, kinddetail[sel3Ref.current.value])
+    if (sel3Ref.current.value == "")
+      setKindData(null);
+    else
+      setKindData(kinddetail[sel3Ref.current.value]);
+  }
 
   const handleCancel = () => {
     sel1Ref.current.value = "";
@@ -97,7 +110,9 @@ export default function ChargeInfo() {
       return;
     }
 
-    getFetchData()
+    setTdata([]);
+    setIsLoading(false);
+    getFetchData();
   };
 
 
@@ -107,6 +122,7 @@ export default function ChargeInfo() {
 
     console.log(tdata)
   },[tdata])
+
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <h1 className="w-full text-2xl font-bold p-5 mb-4 text-left">
@@ -147,24 +163,26 @@ export default function ChargeInfo() {
        <TailButton caption="취소" color="orange" onHandle={handleCancel} />
 
       </div>
-      {
-        (tdata.length != 0) && 
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-4 mt-5">
-          <ChargerCard color="orange" title="충전소수" num={tdata.length} />
-          {
-            Object.keys(stat).map(scode => <ChargerCard key={stat[scode]+scode} 
-                                                        color="orange" 
-                                                        title={stat[scode]} 
-                                                        num={tdata.filter(item => item.stat == scode).length} />)
-          }
-        </div>
-      }
-      {
-         isLoading && 
+     
+      {isLoading && (
         <p className="w-full text-2xl text-blue-700 font-bold p-5 mb-4 text-center">
           로딩중
         </p>
-      }
+      )}
+
+      {tdata.length > 0 && (
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 mt-5">
+          {tdata.map((item, idx) => (
+            <Link
+              key={item.statId + idx}
+              to="/ChargerInfo/detail"
+              state={{ item }}
+            >
+              <ChargerStat statNm={`${item.statNm}(${item.chgerId})`} />
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
