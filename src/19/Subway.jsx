@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import SubwayBox from './SubwayBox';
 import sarea from './sarea.json';
 import TailSelect from '../component/TailSelect';
