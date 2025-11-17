@@ -5,9 +5,14 @@ export default function Header() {
   return (
    <header className='bg-yellow-600 text-white shadow-md'>
         <nav className='container h-16 mx-auto flex justify-between items-center'>
-        <Link to="/" className='text-2xl font-bold text-blue-50 hover:font-bold hover:bg-blue-50 p-2 rounded-sm hover:text-blue-200'>KDT03⏰</Link>
+        <Link to="/" className='text-2xl font-bold text-blue-50 hover:font-bold hover:bg-blue-50 p-2 rounded-sm hover:text-blue-200'>KDT03</Link>
             <ul className='flex space-x-4'>
-                
+                <li>
+                  <Link to="/MyClock"
+                   className='hover:font-bold hover:bg-blue-50 p-2 rounded-sm hover:text-blue-200'>
+                      시계
+                  </Link>
+                </li>
                 <li>
                   <Link to="/Lotto"
                       className='hover:font-bold hover:bg-blue-50 p-2 rounded-sm hover:text-blue-200'>

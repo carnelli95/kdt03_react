@@ -22,15 +22,17 @@ import ChargerDetail from './16/ChargerDetail'
 // import JotaiCnt from './17/JotaiCnt'
 import TodoList from './18_3/TodoList'
 import Subway from './19/Subway'
+import Login from './Login'
 
 function App() {
   return (
-      <BrowserRouter>
-      <div className='w-full h-screen flex flex-col overflow-hidden'>
+    <BrowserRouter>
+      <div className="w-full h-screen flex flex-col overflow-hidden">
         <Header />
-        <main className='container mx-auto flex flex-col flex-grow overflow-y-auto h-fu'>
+        <main className="container mx-auto flex flex-col flex-grow overflow-y-auto h-fu">
           <Routes>
-            <Route path="/" element={<MyClock />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/MyClock" element={<MyClock />} />
             <Route path="/Lotto" element={<Lotto />} />
             <Route path="/BoxOffice" element={<BoxOffice />} />
             <Route path="/Gallery" element={<Gallery />} />
@@ -45,8 +47,8 @@ function App() {
         </main>
         <Footer />
       </div>
-      </BrowserRouter>
-  )
+    </BrowserRouter>
+  );
 }
 
 export default App
